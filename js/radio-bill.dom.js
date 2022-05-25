@@ -6,7 +6,7 @@ const totalTwo = document.querySelector(".totalTwo");
 //get a reference to the add button
 const radioBillAddBtn = document.querySelector(".radioBillAddBtn");
 //create a variable that will keep track of the total bill
-
+let billradio = RadioBill();
 //add an event listener for when the add button is pressed
 function radioBillAddBtnClicked(){
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
@@ -25,14 +25,13 @@ function radioBillAddBtnClicked(){
           callTotalTwo.innerHTML= billradio.getCallTotalCost().toFixed(2);
           smsTotalTwo.innerHTML=billradio.getSmsTotalCost().toFixed(2);
           totalTwo.innerHTML=  billradio.getTotalCost().toFixed(2);
-          totalTwo.classList.remove("warning")
-          totalTwo.classList.remove("critical")
+          
       
                // totalCost = callsTotal + smsTotal;
 
-    totalOneElement.classList.remove("warning")
-    totalOneElement.classList.remove("critical")
-    totalOneElement.classList.add(billradio.totalClassName())
+               totalTwo.classList.remove("warning")
+               totalTwo.classList.remove("critical")
+            totalTwo.classList.add(billradio.totalClassName())
       //color the total based on the criteria
 }
 
