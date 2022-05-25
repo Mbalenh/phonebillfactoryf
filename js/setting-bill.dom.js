@@ -16,27 +16,21 @@ const Updatesettings = document.querySelector(".Updatesettings");
 let settingsBill =  BillwithSettings();
 //add an event listener for when the 'Update settings' button is pressed
 function Updatesetting(){
-        let totalCostSettings = callCostSetting + smsCostSetting;
-    let settingsBill =  BillwithSettings();
-    callCostSetting.innerHTML=settingsBill.setCallTotalCost().toFixed(2);
-    smsCostSetting.innerHTML= settingsBill.setSmsTotalCost().toFixed(2);
-    // * add the appropriate value to the overall total
-    // totalCostSettings = Number(totalcallsSettings) + Number(totalsmsSettings);
-    // * display the latest total on the screen.
-    totalCostSettings.innerHTML = settingsBill.setTotalCost().toFixed(2);
-   
-
+    
+    settingsBill.setCallCost(Number(callCostSetting.value));
+    settingsBill.setSmsCost(Number(smsCostSetting.value));
+    settingsBill.setwarningLevel(Number(warningLevelSetting.value));
+    settingsBill.setCriticalLevel(Number(criticalLevelSetting.value));
+    
         addColorBehavior()
 }   
 function addbtnSetting(){
     var checkedaddbtnSettings = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    let settingsBill =  BillwithSettings();
+    
     if (checkedaddbtnSettings){
         var billItemTypeWithSettings  = checkedaddbtnSettings.value;
 
         // console.log(callCostSetting.value);
-        
-    
            
             // billItemTypeWithSettings will be 'call' or 'sms'
             if(billItemTypeWithSettings === "call"){
@@ -47,7 +41,6 @@ function addbtnSetting(){
     
     }  
      
-    
       
     }
     callTotalSettings.innerHTML=settingsBill.getCallTotalCost().toFixed(2);
@@ -63,14 +56,12 @@ function addbtnSetting(){
 
 //add an event listener for when the add button is pressed  
 function addColorBehavior(){
-    let settingsBill =  BillwithSettings();
+    
     // * check the value thresholds and display the total value in the right color.
     totalSettings.classList.remove("critical");
     totalSettings.classList.remove("warning");
    
         totalSettings.classList.add(settingsBill.totalClassName());
-
-    
      
 }
 // //in the event listener get the value from the billItemTypeRadio radio buttons
